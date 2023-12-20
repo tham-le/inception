@@ -1,0 +1,65 @@
+version: '3.8'
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: requirements/nginx
+      dockerfile: Dockerfile
+    image: nginx
+    ports:
+    - "443:443"
+    networks:
+      - network
+    depends_on:
+    - wordpress
+    volumes:
+      - wp-files:/var/www/thi-le.42.fr
+    restart: always
+
+  mariadb:
+    container_name: mariadb
+    build:
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    image: mariadb
+    env_file: 
+      - .env
+    volumes:
+      - mariadb-db:/var/lib/mysql
+    networks:
+    - network
+    restart: always
+
+  wordpress:
+    container_name: wordpress
+    build:
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    image: wordpress
+    env_file: 
+      - .env
+    depends_on:
+    - mariadb
+    networks:
+    - network
+    volumes:
+      - wp-files:/var/www/thi-le.42.fr
+    restart: always
+volumes:
+  mariadb-db:
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: '/home/thi-le/data/mariadb-db'
+      o: 'bind'
+  wp-files:
+    driver: local
+    driver_opts:
+      type: 'none'
+      device: '/home/thi-le/data/wp-files'
+      o: 'bind'
+
+networks:
+  network: {}
+
+
