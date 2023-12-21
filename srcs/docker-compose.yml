@@ -45,6 +45,15 @@ services:
     volumes:
       - wp-files:/var/www/thi-le.42.fr
     restart: always
+
+  redis:
+    image: redis
+    build: requirements/redis/
+    networks:
+      - network
+    container_name: redis
+    restart: always
+
 volumes:
   mariadb-db:
     driver: local

@@ -1,6 +1,5 @@
 FROM alpine:3.18
 
-RUN mkdir -p /var/www/thi-le.42.f
 
 RUN apk -U upgrade && apk add php php-phar php-fpm php-mysqli php-iconv mysql-client \
  php-json php-curl php-dom php-exif php-fileinfo php-mbstring php-openssl php-xml php-zip \
