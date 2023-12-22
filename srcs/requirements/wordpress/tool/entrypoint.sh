@@ -1,4 +1,5 @@
 #wp core download --path=/var/www/thi-le.42.fr --locale=en_US --force
+ls
 
 sleep 1
 

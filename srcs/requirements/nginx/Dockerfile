@@ -4,6 +4,8 @@ RUN apk update
 RUN apk add nginx
 
 COPY conf/default.conf /etc/nginx/http.d/default.conf
+
+
 COPY ./nginx-selfsigned.key /etc/ssl/private/
 COPY ./nginx-selfsigned.crt /etc/ssl/certs/
 
