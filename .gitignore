@@ -1,4 +1,5 @@
 .env
 key
 *key*
-*cert*
+*crt*
+*assets*
