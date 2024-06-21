@@ -2,4 +2,4 @@ This project aims to broaden your knowledge of system administration by using Do
 
 =====
 
-vm of Alpoine + 3 dockers running in Alpine
+vm of Linux Alpine + 3 dockers running in Linux Alpine
